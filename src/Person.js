@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function Person(props) {
   const containerS = {
     display: "flex",
@@ -26,6 +25,8 @@ export default function Person(props) {
         style={{ width: "40%", height: "auto" }}
       />
       <p className="person">{props.info}</p>
+      <p className="person">{props.info2}</p>
     </div>
   );
 }
+
