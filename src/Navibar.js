@@ -1,40 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import TimeDisplay from "./TimeDisplay";
+
 const CustomNavbar = () => {
-  const [time, setTime] = useState(null);
-  // utk fetch data dr API
-  useEffect(() => {
-    getTime();
-  }, []);
-
-  function getTime() {
-    const url =
-      "https://api.weatherapi.com/v1/current.json?key=70a4b36e34664c10aca61607241305&q=Tangerang&aqi=no";
-    axios
-      .get(url)
-      .then((response) => {
-        setTime(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }
-
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      className="sticky-top"
+    >
       <Container>
-        <Navbar.Brand href="/">Home</Navbar.Brand>
-
+        <Navbar.Brand as={Link} to="/">
+          Home
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/Weather">Weather</Nav.Link>
-            <Nav.Link href="/Recipe">Recipe</Nav.Link>
-            <Nav.Link href="/About">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/Weather">
+              Weather
+            </Nav.Link>
+            <Nav.Link as={Link} to="/Recipe">
+              Recipe
+            </Nav.Link>
+            <Nav.Link as={Link} to="/About">
+              About Us
+            </Nav.Link>
           </Nav>
-          <Navbar.Brand href="/">
-            {time && `Local Time : ${time.location.localtime}`}
+          <Navbar.Brand>
+            <TimeDisplay />
           </Navbar.Brand>
         </Navbar.Collapse>
       </Container>
