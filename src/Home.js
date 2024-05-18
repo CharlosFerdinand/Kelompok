@@ -211,8 +211,11 @@ const Home = () => {
   }
 
   return (
-    <div className="background">
-      <img src={require("./IMG/Pempek/campuranPempek.jpg")} className="bgIMG" />
+    <div>
+      <img
+        src={require("./IMG/Pempek/campuranPempek.jpg")}
+        className="bgDwIMG"
+      />
       <div className="headFiller"></div>
       <div className="daWrap">
         <h1 className="underline">Pempek</h1>
@@ -327,8 +330,9 @@ const Home = () => {
           List out Address of Pempek Place in Palembang City
         </button>
         <div className="theList">
-          {theData.map((placesData) => (
+          {theData.map((placesData, index) => (
             <RestoList
+              key={index}
               place={placesData.thePlace}
               adress={placesData.theAdress}
             />
@@ -339,8 +343,9 @@ const Home = () => {
           List out Address of Pempek Place in Tangerang City
         </button>
         <div className="theList">
-          {theData2.map((placesData) => (
+          {theData2.map((placesData, index) => (
             <RestoList
+              key={index}
               place={placesData.thePlace}
               adress={placesData.theAdress}
             />
@@ -357,8 +362,9 @@ const Home = () => {
           List Out the Address of Your Inputted City
         </button>
         <div className="theList">
-          {theData3.map((placesData) => (
+          {theData3.map((placesData, index) => (
             <RestoList
+              key={index}
               place={placesData.thePlace}
               adress={placesData.theAdress}
             />
