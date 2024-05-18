@@ -36,8 +36,11 @@ export default function Weather() {
   }
 
   return (
-    <div className="background">
-      <img src={require("./IMG/Pempek/campuranPempek.jpg")} className="bgIMG" />
+    <div>
+      <img
+        src={require("./IMG/Pempek/campuranPempek.jpg")}
+        className="bgDwIMG"
+      />
       <div className="headFiller"></div>
       <div className="daWrap">
         <div className="container">
@@ -60,6 +63,9 @@ export default function Weather() {
                     Temperature : {weather.current.temp_c} Celsius
                     <br />
                     Feels like : {weather.current.feelslike_c} Celsius
+                    <br />
+                    Local Time : {weather.location.localtime}
+                    <br />
                     <br />
                     Last Updated : {weather.current.last_updated}
                   </h2>
@@ -96,6 +102,9 @@ export default function Weather() {
                     Temperature : {weather2.current.temp_c} Celsius
                     <br />
                     Feels like : {weather2.current.feelslike_c} Celsius
+                    <br />
+                    Local Time : {weather2.location.localtime}
+                    <br />
                     <br />
                     Last Updated : {weather2.current.last_updated}
                   </h2>
