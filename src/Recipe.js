@@ -9,7 +9,7 @@ export default function Recipe() {
     height: "320",
     width: "100%",
     playerVars: {
-      autoplay: 0,
+      autoplay: 1,
     },
   };
 
@@ -21,80 +21,73 @@ export default function Recipe() {
   var telurPosition = useRef();
   var kapalSelamPosition = useRef();
 
+  function showPlayer() {
+    document.getElementById("moviePlayer").style.display = "inline";
+  }
+
   function moveToAdaan() {
     window.scrollTo({
-      top: adaanPosition.current.offsetTop,
+      top: adaanPosition.current.offsetTop - 100,
       behavior: "smooth",
     });
   }
   function moveToLenjer() {
     window.scrollTo({
-      top: lenjerPosition.current.offsetTop,
+      top: lenjerPosition.current.offsetTop - 100,
       behavior: "smooth",
     });
   }
   function moveToKulit() {
     window.scrollTo({
-      top: kulitPosition.current.offsetTop,
+      top: kulitPosition.current.offsetTop - 100,
       behavior: "smooth",
     });
   }
   function moveToTelur() {
     window.scrollTo({
-      top: telurPosition.current.offsetTop,
+      top: telurPosition.current.offsetTop - 100,
       behavior: "smooth",
     });
   }
   function moveToKapalSelam() {
     window.scrollTo({
-      top: kapalSelamPosition.current.offsetTop,
+      top: kapalSelamPosition.current.offsetTop - 100,
       behavior: "smooth",
     });
   }
 
   function playAdaan() {
     setId("P1v2Tbza8_A");
-    window.scrollTo({
-      top: playerPosition.current.offsetTop - 200,
-      behavior: "smooth",
-    });
+    showPlayer();
   }
   function playLenjer() {
     setId("Ao4nw-hrgqE");
-    window.scrollTo({
-      top: playerPosition.current.offsetTop - 200,
-      behavior: "smooth",
-    });
   }
   function playKulit() {
     setId("LbiNxlXIbaA");
-    window.scrollTo({
-      top: playerPosition.current.offsetTop - 200,
-      behavior: "smooth",
-    });
   }
   function playTelur() {
     setId("oFTehTikmAA");
-    window.scrollTo({
-      top: playerPosition.current.offsetTop - 200,
-      behavior: "smooth",
-    });
   }
   function playKapalSelam() {
     setId("IDNjglrGRYU");
-    window.scrollTo({
-      top: playerPosition.current.offsetTop - 200,
-      behavior: "smooth",
-    });
   }
   return (
-    <div className="background">
-      <img src={require("./IMG/Pempek/campuranPempek.jpg")} className="bgIMG" />
+    <div>
+      <img
+        src={require("./IMG/Pempek/campuranPempek.jpg")}
+        className="bgDwIMG"
+      />
       <div className="headFiller"></div>
       <div className="daWrap">
-        <h1>Recipe</h1>
+        <h1 className="underline">Recipe</h1>
         <br />
-        <div className="video-player" ref={playerPosition}>
+        <div
+          id="moviePlayer"
+          style={{ display: "none" }}
+          className="video-player"
+          ref={playerPosition}
+        >
           <YouTube videoId={videoId} opts={opts} />
         </div>
         <div className="recipe">
@@ -102,112 +95,125 @@ export default function Recipe() {
             <div className="recipeTitle">
               <br />
               <h1>List:</h1>
-              <button onClick={moveToAdaan} className="pempekList">
-                <h4>1. Pempek Adaan.</h4>
-              </button>
-              <br />
-              <button onClick={moveToLenjer} className="pempekList">
-                <h4>2. Pempek Lenjer.</h4>
-              </button>
-              <br />
-              <button onClick={moveToKulit} className="pempekList">
-                <h4>3. Pempek Kulit.</h4>
-              </button>
-              <br />
-              <button onClick={moveToTelur} className="pempekList">
-                <h4>4. Pempek Telur.</h4>
-              </button>
-              <br />
-              <button onClick={moveToKapalSelam} className="pempekList">
-                <h4>5. Pempek Kapal Selam.</h4>
-              </button>
+              <ol>
+                <button onClick={moveToAdaan} className="pempekList">
+                  <h4>
+                    <li>Pempek Adaan.</li>
+                  </h4>
+                </button>
+                <button onClick={moveToLenjer} className="pempekList">
+                  <h4>
+                    <li>Pempek Lenjer.</li>
+                  </h4>
+                </button>
+                <button onClick={moveToKulit} className="pempekList">
+                  <h4>
+                    <li>Pempek Kulit.</li>
+                  </h4>
+                </button>
+                <button onClick={moveToTelur} className="pempekList">
+                  <h4>
+                    <li>Pempek Telur.</li>
+                  </h4>
+                </button>
+                <button onClick={moveToKapalSelam} className="pempekList">
+                  <h4>
+                    <li>Pempek Kapal Selam.</li>
+                  </h4>
+                </button>
+              </ol>
               <br />
               <a id="PempekAdaan" />
               <br />
             </div>
+          </div>
+
+          <div className="recipeContent">
             <div className="recipeTitle">
               <h1 className="underline" ref={adaanPosition}>
-                1. Pempek Adaan (+Saos Cuko).
+                1. Pempek Adaan (+Cuko Sauce).
               </h1>
-              <h5>Kredit: Devina Hermawan</h5>
+              <h5>Credit: Devina Hermawan</h5>
               <button onClick={playAdaan} className="recipeButton">
-                Jalankan Video
+                Play the Video
               </button>
             </div>
             <br />
-            <p className="bahan">Bahan adonan:</p>
+            <p className="bahan">Pempek ingredient:</p>
             <p>
-              1 kg ikan tenggiri giling
-              <br />
-              500 gr es serut / air es
-              <br />
-              4 sdm garam
-              <br />
-              5 sdm gula pasir
-              <br />
-              4 sdm kaldu jamur / penyedap
-              <br />
-              6 siung bawang putih, blender halus
-              <br />
-              2 butir putih telur
-              <br />
-              800 gr sagu
-              <br />
-              100 gr bawang merah, cincang kasar
-              <br />
-              4 batang daun bawang, iris
-              <br />
-              50 ml minyak panas
-              <br />
-              150 ml santan
-              <br />
+              <ul>
+                <li>1 kg of ground mackerel fish</li>
+                <li>500 gr of shaved ice</li>
+                <li>4 tbsp of salt</li>
+                <li>5 tbsp of sugar</li>
+                <li>4 tbsp of mushroom broth / food flavoring</li>
+                <li>6 clove of garlic, blended</li>
+                <li>2 eggs white</li>
+                <li>800 gr of sago</li>
+                <li>100 gr of chopped red onion</li>
+                <li>4 spring onion, sliced</li>
+                <li>50 ml of cooking oil</li>
+                <li>150 ml of santan</li>
+              </ul>
               <br />
             </p>
             <p className="bahan">
-              Bahan cuko: <br />
+              Cuko sauce ingredient: <br />
             </p>
             <p>
-              500 gr gula merah batok
-              <br />
-              60 gr cabai rawit hijau
-              <br />
-              12 siung bawang putih
-              <br />
-              2 sdm ebi kering, rendam air hangat
-              <br />
-              2 sdm cuka
-              <br />
-              30 gr asam jawa, rendam air hangat <br />
-              2 sdt garam
-              <br />
-              2 sdm gula pasir
-              <br />
-              750 ml air
-              <br />
+              <ul>
+                <li>500 gr of shell brown sugar</li>
+                <li>60 gr of green cayenne pepper</li>
+                <li>12 clove of garlic</li>
+                <li>2 tbsp of dried ebi, soak in warm water</li>
+                <li>2 tbsp of vinegar</li>
+                <li>30 gr of asem jawa, soak in warm water</li>
+                <li>2 tsp of salt</li>
+                <li>2 tbsp of sugar</li>
+                <li>750 ml of air</li>
+              </ul>
               <br />
             </p>
-            <p className="bahan">Cara membuat: </p>
+            <p className="bahan">Steps: </p>
             <p>
-              1. Untuk kuah cuko, didihkan air, gula dan asam jawa, masak hingga
-              mendidih. <br />
-              2. Blender ebi, cabai rawit hijau, bawang putih dan sedikit air
-              hingga halus. <br />
-              3. Saring kuah cuko kemudian masukkan bumbu halus ke dalam kuah
-              cuko. Tambahkan garam, gula pasir dan cuka, masak hingga mendidih
-              dan matang. <br />
-              4. Siram daun bawang dengan minyak panas, aduk rata. <br />
-              5. Untuk adonan, masukkan ikan tenggiri, garam, kaldu jamur dan
-              gula pasir ke dalam mixer, aduk hingga lengket. <br />
-              6. Masukkan es serut, mixer hingga menyatu kemudian masukkan
-              bawang putih, putih telur dan tepung sagu, aduk hingga merata.{" "}
-              <br />
-              7. Masukkan bawang merah, daun bawang dan santan, aduk rata.{" "}
-              <br />
-              8. Bentuk bulat adonan dengan scoop ice cream yang sudah di
-              celupkan ke dalam minyak lalu goreng hingga kecokelatan di api
-              sedang, tiriskan. <br />
-              9. Untuk tekstur lebih krispi, potong-potong pempek yang sudah
-              matang lalu goreng kembali hingga kering, tiriskan. <br />
+              <ol>
+                <li>
+                  for the cuko, cook the water with sugar and asem jawa, cook
+                  till boil.
+                </li>
+                <li>
+                  Blend the ebi, green cayenne pepper, garlic and a little bit
+                  of water till smooth.
+                </li>
+                <li>
+                  filter the cuko then add the blended ingredient into the cuko.
+                  Add salt, sugar, and vinegar, then cook till boiling.
+                </li>
+                <li>
+                  Spread the hot cooking oil on the spring onion, then mix well.
+                </li>
+                <li>
+                  for the batter, add ground mackerel fish, salt, mushroom
+                  broth, and sugar to the mixer. Mix until the batter become
+                  sticky.
+                </li>
+                <li>
+                  add the shaved ice to the mixer, mix well then add garlic, egg
+                  white and sago, mix well.
+                </li>
+                <li>
+                  add chopped red onion, spring onion and santan, mix well.
+                </li>
+                <li>
+                  shape the batter round with a scoop of ice cream that are
+                  coated with cooking oil then frie the batter in medium heat
+                  till the batter turned brownish, then drain the batter of oil.
+                </li>
+                <li>
+                  for a crispier texture, chop the cooked pempek then frie it
+                  again till crispy, then drain it of oil.
+                </li>
+              </ol>
             </p>
           </div>
 
@@ -217,60 +223,56 @@ export default function Recipe() {
           <div className="recipeContent">
             <div className="recipeTitle" ref={lenjerPosition}>
               <h1>2. Pempek Lenjer.</h1>
-              <h5>Kredit: susi kitchen</h5>
+              <h5>Credit: susi kitchen</h5>
               <button onClick={playLenjer} className="recipeButton">
-                Jalankan Video
+                Play the Video
               </button>
             </div>
             <br />
-            <p className="bahan">Bahan adonan: </p>
+            <p className="bahan">Pempek ingredient: </p>
             <p>
-              1 kg ikan tenggiri giling
-              <br />
-              400 ml air
-              <br />
-              2 butir telur
-              <br />
-              2 sdm garam
-              <br />
-              1/2 sdm gula
-              <br />
-              penyedap rasa (bisa kaldu jamur) secukupnya
-              <br />
-              750 gr tepung sagu
-              <br />
+              <ul>
+                <li>1 kg of ground mackerel fish</li>
+                <li>400 ml of water</li>
+                <li>2 eggs</li>
+                <li>2 tbsp of salt</li>
+                <li>1/2 tbsp of sugar</li>
+                <li>mushroom broth / food flavoring (as much as preference)</li>
+                <li>750 gr of sago flour</li>
+              </ul>
               <br />
             </p>
-            <p className="bahan">Cara membuat:</p>
+            <p className="bahan">Steps:</p>
             <p>
-              1. Masukkan ikan tenggiri giling, air, garam, gula, dan penyedap
-              rasa ke dalam baskom.
-              <br />
-              2. Pecahkan telur dan kocok telurnya lalu dimasukkan ke dalam
-              baskom.
-              <br />
-              3. Aduk adonan.
-              <br />
-              4. Ketika adonan mulai mengental, masukkan beberapa tepung sagu
-              dan aduk adonan.
-              <br />
-              5. Setelah tepung mulai tercampur dengan adonan, tambahkan
-              beberapa tepung sagu dan diulang hingga adonan tidak terlalu
-              lengket lagi
-              <br />
-              6. Taburkan tepung sagu di atas permukaan.
-              <br />
-              7. Ambil adonan secukupnya lalu digulung.
-              <br />
-              8. Didih air di wajan dengan api sedang.
-              <br />
-              9. masukkan adonan ke dalam wajan.
-              <br />
-              10. Setelah 10 menit, adonan dibalik.
-              <br />
-              11. Biarkan adonan selama 10 menit atau ketika adonan telah mulai
-              membesar. <br />
-              12. Angkat adonan lalu tiriskan. <br />
+              <ol>
+                <li>
+                  add the ground mackerel fish, water, salt, sugar, and food
+                  flavoring to the basin.
+                </li>
+                <li>
+                  crack the egg and mixed the egg then add it to the basin.
+                </li>
+                <li>mix them till they are evenly.</li>
+                <li>
+                  when the batter start to thicken, add some more of the sago
+                  flour and mix the batter well.
+                </li>
+                <li>
+                  after the flour start to mix with the batter, add some more
+                  sago flour and repeat till the batter are not too sticky
+                  anymore.
+                </li>
+                <li>sprinkle some sago floar on a surface.</li>
+                <li>take just enough of the batter then roll it.</li>
+                <li>boil the water in medium heat.</li>
+                <li>then boil the batter.</li>
+                <li>after 10 minute, flip the batter.</li>
+                <li>
+                  let the batter cook for another 10 minute or until when the
+                  batter start growing in size.
+                </li>
+                <li>lift the dough then drain it.</li>
+              </ol>
             </p>
           </div>
 
@@ -280,64 +282,72 @@ export default function Recipe() {
           <div className="recipeContent">
             <div className="recipeTitle" ref={kulitPosition}>
               <h1>3. Pempek Kulit.</h1>
-              <h5>Kredit: Ulfa Khairunnisa Santoso</h5>
+              <h5>Credit: Ulfa Khairunnisa Santoso</h5>
               <button onClick={playKulit} className="recipeButton">
-                Jalankan Video
+                Play the Video
               </button>
             </div>
             <br />
-            <p className="bahan">Bahan Adonan:</p>
+            <p className="bahan">Pempek ingredient:</p>
 
             <p>
-              1 kg kulit ikan tenggiri giling
-              <br />
-              35 gr garam halus
-              <br />
-              20 gr penyedap rasa
-              <br />
-              5 gr baking powder
-              <br />
-              15 gr lada bubuk
-              <br />
-              200 gr santan kara
-              <br />
-              4 butir telur
-              <br />
-              100 gr bawang merah (diiris) <br />
-              100 gr daun bawang (diiris) <br />
-              100 gr tepung terigu
-              <br />
-              700 gr tepung tapioka
-              <br />
-              minyak goreng
-              <br />
+              <ul>
+                <li>1 kg of ground mackerel fish's skin</li>
+                <li>35 gr of fine salt</li>
+                <li>20 gr of food flavoring</li>
+                <li>5 gr of baking soda</li>
+                <li>15 gr of pepper</li>
+                <li>200 gr of santan kara</li>
+                <li>4 eggs</li>
+                <li>100 gr of chopped red onion</li>
+                <li>100 gr of chopped spring onion</li>
+                <li>100 gr of wheat flour</li>
+                <li>700 gr of tapioka flour</li>
+                <li>cooking oil</li>
+              </ul>
               <br />
             </p>
-            <p className="bahan">Cara membuat:</p>
+            <p className="bahan">Steps:</p>
 
             <p>
-              1. Campurkan garam, penyedap rasa, baking powder, dan lada kedalam
-              santan dan aduk hingga larut. <br />
-              2. Tuangkan santan dan kulit ikan tenggiri kedalam baskom lalu
-              diaduk hingga tercampur rata. <br />
-              3. Pecahkan telur dan masukkan ke dalam adonan dan diaduk hingga
-              tercampur rata. <br />
-              4. Masukkan bawang merah dan daun bawang yang telah diiris ke
-              dalam adonan lalu diaduk hingga tercampur rata. <br />
-              5. Masukkan tepung terigu ke dalam adonan lalu diaduk hingga
-              tercampur rata. <br />
-              6. Masukkan 600 gr tepung tapioka ke dalam adonan lalu diaduk
-              hingga tercampur rata. Diusahakan aduknya dari ujung baskom dan
-              perlahan-lahan sambil memutar agar pempek tidak mengeras. <br />
-              7. Panaskan minyak goreng dengan api sedang. <br />
-              8. Taburkan tepung tapioka di tangan lalu ambil adonan sekepal
-              tangan. <br />
-              9. Taburkan beberapa tepung tapioka ke adonan lalu bentukkan
-              adonan berbentuk penyet bulat. <br />
-              10. Masukkan adonan yang telah dibentuk kedalam minyak goreng.{" "}
-              <br />
-              11. Angkat adonan yang telah menjadi kuning keemasan dan sedikit
-              gelap lalu ditiris. <br />
+              <ol>
+                <li>
+                  mix the salt, food flavoring, baking soda, and pepper into the
+                  santan then mix until dissolved.
+                </li>
+                <li>
+                  pour the santan and ground mackerel fish's skin into a basin
+                  then mix well.
+                </li>
+                <li>
+                  crack the egg open and add it into the batter then stir until
+                  the batter is evenly mix.
+                </li>
+                <li>
+                  add the red onion and spring onion to the batter then stir
+                  until the batter is evenly mixed.
+                </li>
+                <li>
+                  add the wheat flour to the batter then stir until evenly mixed
+                </li>
+                <li>
+                  add 600 gr of tapioka flour to the batter then stir until
+                  evenly mix. while stirring, make sure to stir and mix from the
+                  edge first slowly while also doing a spinning motion so the
+                  batter doesn't get hardened.
+                </li>
+                <li>heat up the cooking oil in medium heat.</li>
+                <li>
+                  sprinkle some tapioka flour to your hand then take a fist of
+                  the batter.
+                </li>
+                <li>
+                  sprinkle some more of the tapioka flour to the batter on hand
+                  then shape it to a flat-round shape.
+                </li>
+                <li>fry it till it became golden brown</li>
+                <li>lift the pempek then drain it from the oil.</li>
+              </ol>
             </p>
           </div>
 
@@ -347,65 +357,69 @@ export default function Recipe() {
           <div className="recipeContent">
             <div className="recipeTitle" ref={telurPosition}>
               <h1>4. Pempek Telur.</h1>
-              <h5>Kredit: ria zi</h5>
+              <h5>Credit: ria zi</h5>
               <button onClick={playTelur} className="recipeButton">
-                Jalankan Video
+                Play the Video
               </button>
             </div>
             <br />
-            <p className="bahan">Bahan adonan:</p>
+            <p className="bahan">Pempek ingredient:</p>
             <p>
-              500 gr ikan giling, bisa gabus, tenggiri
+              <ul>
+                <li>500 gr of ground fish(can be mackerel or cork fish)</li>
+                <li>400 gr of tapioka flour</li>
+                <li>400 ml of water</li>
+                <li>2 & 1/2 tsp of salt</li>
+                <li>1 tsp of sugar</li>
+                <li>1 tsp of food flavoring</li>
+                <li>cooking oil</li>
+              </ul>
               <br />
-              400 gr sagu tani
-              <br />
-              400ml air
-              <br />
-              2,5 sdt garam
-              <br />
-              1 sdt gula pasir <br />
-              1 sdt penyedap rasa
-              <br />
-              minyak goreng
-              <br />
-              <br />
-              Bahan isian: <br />
-              4 butir telur
-              <br />
-              1/4 sdt garam
-              <br />
+              Filling ingredient: <br />
+              <ul>
+                <li>4 eggs</li>
+                <li>1/4 tsp salt</li>
+              </ul>
               <br />
             </p>
-            <p className="bahan">Cara membuat:</p>
+            <p className="bahan">Steps:</p>
             <p>
-              1. Untuk isiannya, pecahkan telur dan masukkan garam lalu diaduk
-              rata.
-              <br />
-              2. Masukkan isian kedalam botol kecap.
-              <br />
-              3. Untuk adonan, masukkan air, ikan giling, garam, gula, dan
-              penyedap rasa lalu aduk hingg tercampur rata dan adonan terasa
-              lembut dan kental.
-              <br />
-              4. Masukkan sagu perlahan sambil diaduk hingga rata.
-              <br />
-              5. Terus aduk hingga adonan menjadi lembek.
-              <br />
-              6. Siapkan pot air dan masukkan minyak secukupnya agar pempek
-              tidak lengket lalu dididihkan.
-              <br />
-              7. Taburkan sagu ke tangan, lalu ambil sekepal adonan.
-              <br />
-              8. Bentukkan adonan menjadi bola lalu tekan jempol ke tengah
-              adonan dan dibentuk menjadi seperti mangkok.
-              <br />
-              9. Masukkan isian ke dalam lubang lalu pinggirannya dicubit hingga
-              isian tertutup rapat.
-              <br />
-              10. Masukkan adonan ke dalam pot.
-              <br />
-              11. Angkat adonan yang mengapung dan melendung lalu ditiriskan.
-              <br />
+              <ol>
+                <li>
+                  for the filling, crack open the eggs and mix them well with
+                  the salt.
+                </li>
+                <li>put the filling into a ketchup bottle.</li>
+                <li>
+                  for the pempek, add water, ground fish, salt, sugar, and food
+                  flavoring then mix evenly until the batter become soft and
+                  thick.
+                </li>
+                <li>add tapioka flour little by little while also mixing.</li>
+                <li>repeat until the batter become flabby.</li>
+                <li>
+                  prepare a cooking pot with water and cooking oil. the cooking
+                  oil is to make sure the pempek doesn't stick so don't put too
+                  much.
+                </li>
+                <li>
+                  sprinkle some of the flour on to your hand, then take a fist
+                  of the batter.
+                </li>
+                <li>
+                  shape the batter into a ball then press the middle of the
+                  batter with the thumb and shape it further into a mini cup.
+                </li>
+                <li>
+                  add the filling into the hole on the batte, then pinch the
+                  edge to seal it tightly.
+                </li>
+                <li>and lastly, boil the pempek in the pot.</li>
+                <li>
+                  lift and drain the pempek when they start floating and
+                  flexxing.
+                </li>
+              </ol>
             </p>
           </div>
 
@@ -415,107 +429,108 @@ export default function Recipe() {
           <div className="recipeContent">
             <div className="recipeTitle" ref={kapalSelamPosition}>
               <h1>5. Pempek Kapal Selam.</h1>
-              <h5>Kredit: Yongki Gunawan</h5>
+              <h5>Credit: Yongki Gunawan</h5>
               <button onClick={playKapalSelam} className="recipeButton">
-                Jalankan Video
+                Play the Video
               </button>
             </div>
             <br />
-            <p className="bahan">Bahan adonan:</p>
+            <p className="bahan">Pempek ingredient:</p>
             <p>
-              1,2 kg ikan tenggiri giling
+              <ul>
+                <li>1,2 kg of ground mackerel fish</li>
+                <li>30 gr of sugar</li>
+                <li>15 gr of MonoSodiumGlutamate(MSG in short)</li>
+                <li>24 gr of salt</li>
+                <li>600 gr of water</li>
+                <li>1,2 kg of tapioka flour</li>
+                <li>1 duck egg</li>
+                <li>2 sheet of salam leaves</li>
+              </ul>
               <br />
-              30 gr gula pasir 15 gr MSG
+              Cuko sauce ingredient:
               <br />
-              24 gr garam
-              <br />
-              600 gr air
-              <br />
-              1,2 kg sagu tani
-              <br />
-              1 butir telur bebek
-              <br />
-              2 lembar daun salam
-              <br />
-              <br />
-              Bahan saus cuka:
-              <br />
-              100 gr asem jawa
-              <br />
-              1,2 kg air mineral
-              <br />
-              50 gr tauco kuning
-              <br />
-              50 gr bawang putih
-              <br />
-              100 gr cabai rawit hijau
-              <br />
-              35 gr garam
-              <br />
-              250 gr gula aren
-              <br />
-              350 gr kecap manis
-              <br />
-              2 gr cuka
-              <br />
-              2 lembar daun salem
-              <br />
+              <ul>
+                <li>100 gr of asem jawa</li>
+                <li>1,2 kg of mineral water</li>
+                <li>50 gr of tauco kuning (the salty one)</li>
+                <li>50 gr of garlic</li>
+                <li>100 gr of green cayenne pepper</li>
+                <li>35 gr of salt</li>
+                <li>250 gr of palm sugar</li>
+                <li>350 gr of sweet soy sauce</li>
+                <li>2 gr of vinegar</li>
+                <li>2 sheet of salam leaves</li>
+              </ul>
               <br />
             </p>
-            <p className="bahan">Cara membuat:</p>
+            <p className="bahan">Steps:</p>
             <p>
-              1. Untuk pempeknya, masukkan ikan tenggiri, gula pasir, dan MSG
-              kedalam mixer dan diaduk deengan kecepatan rendah.
-              <br />
-              2. Setelah menjadi lembut, masukkan air dikit-dikit.
-              <br />
-              3. Jika menggunakan mixer, pindahkan adonan ke baskom lain ketika
-              adonan udah menjadi lembut.
-              <br />
-              4. Masukkan garam lalu diaduk hingga rata.
-              <br />
-              5. Masukkan sagu tani dikit-dikit sambil diaduk.
-              <br />
-              6. Seletah adonan tercampur rata dan dapat di angkat secara
-              keseluruhannya, diamkan adonan selama 15- 20 menit.
-              <br />
-              7. Untuk isian dari pempeknya, pecahkan telur bebek dan pisahkan
-              tiap bagian kuningnya.
-              <br />
-              8. Ambil 150 gr adonan dan bentuklah adonan menjadi bola lalu
-              bagian tengahnya ditekan hingga ada ruangan untuk menaruk kuning
-              telur.
-              <br />
-              9. taruk kuning telur ke dalam adonan lalu pincit ujung adonan
-              untuk menutup kuning telur.
-              <br />
-              10. Ambil adonan sebanyak satu kepalan lalu di gulung.
-              <br />
-              11. Panaskan air dengan 2 daun salam hingga mendidih, lalu
-              masukkan adonan pempek.
-              <br />
-              12. Selagi merebus pempek, buat saus cukanya. Untuk cukanya,
-              masukkan 500 gr air dan asem jawa ke dalam mangkok bersih.
-              <br />
-              13. Hancurkan asem jawa dengan tangan di dalam air lalu airnya
-              disaring.
-              <br />
-              14. Masukkan air yang ada di mangkok, tauco kuning, bawang putih,
-              garam, gula aren, dan cabe rawit hijau ke dalam blender.
-              <br />
-              15. Hidupkan blender hingga semuah bahan tercampur rata, lalu
-              masukkan kecap manis dan 700 gr air ke dalam blender lalu
-              diaduk-aduk.
-              <br />
-              16. Rebus saus cuka dengan 2 lembar daun salam dan diberi sedikit
-              cuka. Berhenti merebus saus cuka ketika mulai mendidih.
-              <br />
-              17. Balik ke pempek, tiriskan pempek lalu gorengkan pempek dalam
-              minyak goreng untuk sementara.
-              <br />
-              18. Pempek lalu disaji di piring dengan saus cuka, timun yang
-              telah diiris, dan mie.
-              <br />
+              <ol>
+                <li>
+                  for the pempek, add the ground mackerel, sugar, and MSG into
+                  the mixer then turn the mixer power to low.
+                </li>
+                <li>
+                  after the batter become soft, add water litlle by litte.
+                </li>
+                <li>
+                  when the batter become soft, move the batter to another basin
+                  as you will need to start mixing it by hand.
+                </li>
+                <li>add salt then mix evenly.</li>
+                <li>add tapioka flour little by little while also mix them.</li>
+                <li>
+                  after the batter is evenly mixed and can be lifted then let
+                  the batter rest for 15-20 minute.
+                </li>
+                <li>
+                  for the filling, crack open the duck egg and get the yolk.
+                </li>
+                <li>
+                  take 150 gr of the batte and shape it into a ball then press
+                  the middle of the batter till it became a pocket where the egg
+                  yolk can be put into.
+                </li>
+                <li>
+                  put the egg yolk into the pocket of the batter then pinch the
+                  edge to seal it tightly.
+                </li>
+                <li>take a fist of another batter, then roll it.</li>
+                <li>
+                  boil the water with 2 sheet of salam leaves, when it boils
+                  start putting the pempek in.
+                </li>
+                <li>
+                  while waiting for the pempek to cook, now is to prepare the
+                  cuko sauce. add 500 gr of water and asem jawa into a clean
+                  bowl.
+                </li>
+                <li>
+                  press the asem jawa with your finger then filter the water.
+                </li>
+                <li>
+                  add water from the bowl, tauco kuning, garlic, salt, palm
+                  sugar, and green cayenne pepper into the blender then blend
+                  them until the ingredients are evenly mixed.
+                </li>
+                <li>
+                  add sweet soy suce and 700 gr of water to the blender then mix
+                  them.
+                </li>
+                <li>
+                  boil the mixture with 2 sheet of salam leave and add the
+                  vinegar, stop when the sauce start boiling.
+                </li>
+                <li>
+                  back to the pempek, drain the pempek then fry the pempek in
+                  cooking oil for a little while.
+                </li>
+                <li>
+                  the pempek is ready to be served on a plate with the sauce,
+                  noodle, and chopped cucumber.
+                </li>
+              </ol>
             </p>
           </div>
         </div>
